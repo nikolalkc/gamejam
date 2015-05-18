@@ -9,8 +9,9 @@ public class snakeElementControl : MonoBehaviour
 		Text text;
 		static int elementIndex = 0;
 		public int thisElementIndex;
-		
-		// Use this for initialization
+		public List<int> listOfIndexesToDelete;	
+
+// Use this for initialization
 		void Start ()
 		{
 				text = gameObject.GetComponentInChildren<Text> ();
@@ -23,12 +24,12 @@ public class snakeElementControl : MonoBehaviour
 				stackControlRef.snakeStack.Add (gameObject);
 				foreach (GameObject g in stackControlRef.snakeStack) {
 //				snakeElementControl s = g.GetComponent<snakeElementControl>();
-						//print(s.thisElementIndex);
+//print(s.thisElementIndex);
 
-						//print (stackControlRef.snakeStack.IndexOf(g));
+//print (stackControlRef.snakeStack.IndexOf(g));
 
 				}
-				//print ("======================");
+//print ("======================");
 		}
 
 		void OnMouseEnter ()
@@ -49,16 +50,14 @@ public class snakeElementControl : MonoBehaviour
 				int ind = stackControlRef.snakeStack.IndexOf (gameObject);
 				print (ind);
 				float thisGameObjectType = gameObject.GetComponent<RandomColor> ().randomColor;
-				
-				//destroy object on right
+
+//find object on right to destroy
 				for (int i = ind; i < stackControlRef.snakeStack.Count; i++) {
 
 						if (!stackControlRef.snakeStack [i].Equals (game.emptyObject)) {
 								float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<RandomColor> ().randomColor;
 								if (compareGameObjectType == thisGameObjectType) {
-
-										Destroy (stackControlRef.snakeStack [i]);
-										stackControlRef.snakeStack [i] = game.emptyObject;
+										listOfIndexesToDelete.Add (i);	
 
 								} else {
 										break;
@@ -68,6 +67,31 @@ public class snakeElementControl : MonoBehaviour
 								break;
 						}
 				}
+//find object on left to destroy
+				for (int i = ind-1; i > 0; i--) {
+						if (!stackControlRef.snakeStack [i].Equals (game.emptyObject)) {
+								float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<RandomColor> ().randomColor;
+								if (compareGameObjectType == thisGameObjectType) {
+										listOfIndexesToDelete.Add (i);
+
+								} else {
+										break;
+								}
+						} else {
+								break;
+
+						}
+				}
+
+//destroy objects
+				if (listOfIndexesToDelete.Count > 2) {
+						for (int i = 0; i<listOfIndexesToDelete.Count; i++) {
+								Destroy (stackControlRef.snakeStack [listOfIndexesToDelete [i]]);
+								stackControlRef.snakeStack [listOfIndexesToDelete [i]] = game.emptyObject;
+
+						}
+				}
+				listOfIndexesToDelete.Clear ();
 
 
 		}
