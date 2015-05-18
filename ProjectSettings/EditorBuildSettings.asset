@@ -6,4 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/zuma3d.unity
+    path: Assets/Scenes/zuma3d.unity
