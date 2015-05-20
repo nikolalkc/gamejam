@@ -10,10 +10,10 @@ public class FollowMotionPath : MonoBehaviour
 	public bool loop;
 	Transform lookVector;
 	Vector3 cameraPosition;
-	float uv;
+	public float uv;
     float speedFactor = 0;
 	
-	void Awake()
+	void Start()
 	{
 		lookVector = GameObject.FindGameObjectWithTag("lookVector").GetComponent<Transform>();
         motionPath = GameObject.FindGameObjectWithTag("path").GetComponent<MotionPath>();
