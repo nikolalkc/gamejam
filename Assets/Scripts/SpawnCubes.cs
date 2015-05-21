@@ -4,9 +4,10 @@ using UnityEngine.UI;
 public class SpawnCubes : MonoBehaviour {
     public GameObject cube;
 	public Text text;
+	float spawnSpeed = game.globalSpawnSpeed;
 	// Use this for initialization
 	void Awake () {
-        Invoke("SpawnCube", 1f);
+		Invoke("SpawnCube", spawnSpeed);
 	}
 	
 	// Update is called once per frame
@@ -16,7 +17,7 @@ public class SpawnCubes : MonoBehaviour {
     void SpawnCube()
     {
         Instantiate(cube);
-        Invoke("SpawnCube", 1f);
+		Invoke("SpawnCube", spawnSpeed);
 //		text.text = "";
 //		GameObject[] cubes = GameObject.FindGameObjectsWithTag("cube");
 //		foreach ( GameObject g in cubes) {

@@ -24,12 +24,12 @@ public class snakeElementControl : MonoBehaviour
 		gameObject.name = "Cube_" + thisElementIndex.ToString ();
 		stackControlRef = GameObject.FindGameObjectWithTag ("stackControl").GetComponent<StackController> ();
 		stackControlRef.snakeStack.Add (gameObject);
-		foreach (GameObject g in stackControlRef.snakeStack) {
+		//foreach (GameObject g in stackControlRef.snakeStack) {
 			//				snakeElementControl s = g.GetComponent<snakeElementControl>();
 			//print(s.thisElementIndex);
 
 			//print (stackControlRef.snakeStack.IndexOf(g));
-		}
+		//}
 
 		//print ("======================");
 	}

@@ -6,7 +6,7 @@ public class FollowMotionPath : MonoBehaviour
 	StackController stackControlRef;
 	public MotionPath motionPath;
 	public float startPosition;
-	public float speed;										// Realworld units per second you want your object to travel
+	float speed = game.globalSnakeSpeed;									// Realworld units per second you want your object to travel
 	public bool loop;
 	Transform lookVector;
 	Vector3 cameraPosition;
