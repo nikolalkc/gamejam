@@ -71,7 +71,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motionPath: {fileID: 0}
   startPosition: 0
-  speed: 1
   loop: 0
   uv: 0
 --- !u!135 &13528894
