@@ -44,59 +44,65 @@ public class snakeElementControl : MonoBehaviour
 		gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);
 	}
 
-	void OnMouseDown ()
-	{
+	void OnMouseDown ()	{									//if (stackControlRef.snakeStack [i].tag <> "emptyObject")
 		int ind = stackControlRef.snakeStack.IndexOf (gameObject);
 		//print (ind);
 		float thisGameObjectType = gameObject.GetComponent<RandomColor> ().randomColor;
 
 		//find object on right to destroy
-				for (int i = ind; i < stackControlRef.snakeStack.Count; i++) {
-			if (!stackControlRef.snakeStack [i].Equals (game.emptyObject)) {
+		for (int i = ind; i < stackControlRef.snakeStack.Count; i++) {
+			if (!(stackControlRef.snakeStack[i].tag == "emptyObject")) {
+				print (stackControlRef.snakeStack[i].name);
 				float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<RandomColor> ().randomColor;
 				if (compareGameObjectType == thisGameObjectType) {
 					listOfIndexesToDelete.Add (i);
-				}				else {
+				}
+				else {
 					break;
 				}
-			}			else {
+			}	
+			else {
 				break;
 			}
 		}
 
 		//find object on left to destroy
-				for (int i = ind-1; i > 0; i--) {
-			if (!stackControlRef.snakeStack [i].Equals (game.emptyObject)) {
+		for (int i = ind-1; i > 0; i--) {
+			if (!(stackControlRef.snakeStack [i].tag == "emptyObject")) {
+				print (stackControlRef.snakeStack[i].name);
 				float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<RandomColor> ().randomColor;
 				if (compareGameObjectType == thisGameObjectType) {
 					listOfIndexesToDelete.Add (i);
-				}				else {
+				}
+				else {
 					break;
 				}
-			}			else {
+
+			}
+			else {
 				break;
 			}
 		}
 
 		//destroy objects
-				if (listOfIndexesToDelete.Count > 0) {
-			for (int i = 0; i<listOfIndexesToDelete.Count; i++) {
-								Transform thisObjectTransform;
-								thisObjectTransform = stackControlRef.snakeStack [listOfIndexesToDelete [i]].transform;
-								GameObject createdObject;
-								createdObject = Instantiate (emptySphere,thisObjectTransform.position,Quaternion.identity) as GameObject;
-								FollowMotionPath instantiatedObject;
-								instantiatedObject = createdObject.GetComponent<FollowMotionPath>();
-								float createdStartPosition;
-								createdStartPosition = stackControlRef.snakeStack [listOfIndexesToDelete [i]].GetComponent<FollowMotionPath>().uv;
-								instantiatedObject.startPosition = createdStartPosition;
-								print (createdStartPosition);
-								
-								Destroy (stackControlRef.snakeStack [listOfIndexesToDelete [i]]);
-								stackControlRef.snakeStack [listOfIndexesToDelete [i]] = game.emptyObject;
+		//if (listOfIndexesToDelete.Count > 0) {
+		for (int i = 0; i<listOfIndexesToDelete.Count; i++) {
+			Transform thisObjectTransform;
+			thisObjectTransform = stackControlRef.snakeStack [listOfIndexesToDelete [i]].transform;
+			GameObject createdObject;
+			createdObject = Instantiate (emptySphere,thisObjectTransform.position,Quaternion.identity) as GameObject;
+			FollowMotionPath instantiatedObject;
+			instantiatedObject = createdObject.GetComponent<FollowMotionPath>();
+			float createdStartPosition;
+			createdStartPosition = stackControlRef.snakeStack [listOfIndexesToDelete [i]].GetComponent<FollowMotionPath>().uv;
+			instantiatedObject.startPosition = createdStartPosition;
+			print (createdStartPosition);
+			
+			Destroy (stackControlRef.snakeStack [listOfIndexesToDelete [i]]);
+			stackControlRef.snakeStack [listOfIndexesToDelete [i]] = instantiatedObject.gameObject;
 
-						}
-				}
+		}
+				//}
 				listOfIndexesToDelete.Clear ();
 
 

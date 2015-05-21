@@ -6,7 +6,7 @@ public class SpawnCubes : MonoBehaviour {
 	public Text text;
 	// Use this for initialization
 	void Awake () {
-        Invoke("SpawnCube", 0.5f);
+        Invoke("SpawnCube", 1f);
 	}
 	
 	// Update is called once per frame
@@ -16,7 +16,7 @@ public class SpawnCubes : MonoBehaviour {
     void SpawnCube()
     {
         Instantiate(cube);
-        Invoke("SpawnCube", 0.5f);
+        Invoke("SpawnCube", 1f);
 //		text.text = "";
 //		GameObject[] cubes = GameObject.FindGameObjectsWithTag("cube");
 //		foreach ( GameObject g in cubes) {
