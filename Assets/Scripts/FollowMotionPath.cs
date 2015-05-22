@@ -23,50 +23,63 @@ public class FollowMotionPath : MonoBehaviour
 			enabled = false;
 	}
 
-	public bool IsDynamic() {
-		snakeElementControl ElementProperties = gameObject.GetComponent<snakeElementControl>();
-		int elementIndex = ElementProperties.thisElementIndex;
+
+
+	bool IsDynamic() {
 		bool isDynamic = true;
-		int stackCount = stackControlRef.snakeStack.Count;
-		int lastCreatedElementIndex = stackControlRef.snakeStack[stackCount].GetComponent<snakeElementControl>().thisElementIndex;
-		for (int i = elementIndex; i < lastCreatedElementIndex; i++) {
-			print ("StackCOunt:" + " " + stackCount + " i:" + i);
-			if (stackControlRef.snakeStack[i].tag == "emptyObject") {
-				isDynamic = false;
-				break;
+		if (gameObject.tag != "emptyObject") {
+			snakeElementControl ElementProperties = gameObject.GetComponent<snakeElementControl> ();
+			int elementIndex = ElementProperties.thisElementIndex;
+			int stackCount = stackControlRef.snakeStack.Count;
+			GameObject lastCreatedObjectInStack = stackControlRef.snakeStack [stackCount - 1];
+			snakeElementControl s = lastCreatedObjectInStack.GetComponent<snakeElementControl> ();
+			int lastCreatedIndexInStack = s.thisElementIndex;
+			for (int i = elementIndex; i < lastCreatedIndexInStack; i++) {
+				if ((stackControlRef.snakeStack [i] != null) && (stackControlRef.snakeStack [i].tag == "emptyObject")) {
+					isDynamic = false;
+					break;
+				}
 			}
 		}
 		return isDynamic;
 
+	
 	}
+
+
+
+
+
 	
 	void Update()
 	{
-		bool thisObjectIsDynamic = IsDynamic();
+	
+		bool thisObjectIsDynamic = IsDynamic ();
 		if (thisObjectIsDynamic) {
 			uv += ((speed / motionPath.length) * Time.fixedDeltaTime) + speedFactor;			// This gets you uv amount per second so speed is in realworld units
+			
+			if (loop)
+				uv = (uv<0?1+uv:uv) %1;
+	        else if (uv > 1)
+	        {
+	            enabled = false;
+				stackControlRef.snakeStack.Remove(gameObject);
+				Destroy(gameObject);
+	        }
+			Vector3 pos = motionPath.PointOnNormalizedPath(uv);
+			Vector3 norm = motionPath.NormalOnNormalizedPath(uv);
+			
+			 transform.position = pos;
+			 transform.forward = speed >0?norm:-norm;
+
+			//soulution one, fixed angle
+			//cameraPosition = lookVector.position;
+			//transform.right =-cameraPosition;
+
+			cameraPosition = lookVector.position;
+			Vector3 targetPosition = speed>0? pos+norm:pos-norm;
+			transform.LookAt(targetPosition, cameraPosition);
 		}
-		if (loop)
-			uv = (uv<0?1+uv:uv) %1;
-        else if (uv > 1)
-        {
-            enabled = false;
-			stackControlRef.snakeStack.Remove(gameObject);
-			Destroy(gameObject);
-        }
-		Vector3 pos = motionPath.PointOnNormalizedPath(uv);
-		Vector3 norm = motionPath.NormalOnNormalizedPath(uv);
-		
-		 transform.position = pos;
-		 transform.forward = speed >0?norm:-norm;
-
-		//soulution one, fixed angle
-		//cameraPosition = lookVector.position;
-		//transform.right =-cameraPosition;
-
-		cameraPosition = lookVector.position;
-		Vector3 targetPosition = speed>0? pos+norm:pos-norm;
-		transform.LookAt(targetPosition, cameraPosition);
 
 	}
     void OnMouseDown()
