@@ -18,10 +18,6 @@ public class StackController : MonoBehaviour {
 
 			}
 		}
-//		foreach (GameObject g in snakeStack) {
-//			text.text += g.name;
-//
-//		}
 
 	}
 

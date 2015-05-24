@@ -73,6 +73,7 @@ MonoBehaviour:
   startPosition: 0
   loop: 0
   uv: 0
+  movement: 0
 --- !u!135 &13528894
 SphereCollider:
   m_ObjectHideFlags: 1

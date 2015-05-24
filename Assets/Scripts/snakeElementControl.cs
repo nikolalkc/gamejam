@@ -24,14 +24,7 @@ public class snakeElementControl : MonoBehaviour
 		gameObject.name = "Cube_" + thisElementIndex.ToString ();
 		stackControlRef = GameObject.FindGameObjectWithTag ("stackControl").GetComponent<StackController> ();
 		stackControlRef.snakeStack.Add (gameObject);
-		//foreach (GameObject g in stackControlRef.snakeStack) {
-			//				snakeElementControl s = g.GetComponent<snakeElementControl>();
-			//print(s.thisElementIndex);
 
-			//print (stackControlRef.snakeStack.IndexOf(g));
-		//}
-
-		//print ("======================");
 	}
 
 	void OnMouseEnter ()
@@ -45,67 +38,90 @@ public class snakeElementControl : MonoBehaviour
 	}
 
 	void OnMouseDown ()	{									//if (stackControlRef.snakeStack [i].tag <> "emptyObject")
-		int ind = stackControlRef.snakeStack.IndexOf (gameObject);
-		//print (ind);
-		float thisGameObjectType = gameObject.GetComponent<RandomColor> ().randomColor;
+       // gameObject.GetComponent<FollowMotionPath>().movement = FollowMotionPath.Movement.Static;
+        DestoyChain();
+	}
 
-		//find object on right to destroy
-		for (int i = ind; i < stackControlRef.snakeStack.Count; i++) {
-			if (!(stackControlRef.snakeStack[i].tag == "emptyObject")) {
-				print (stackControlRef.snakeStack[i].name);
-				float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<RandomColor> ().randomColor;
-				if (compareGameObjectType == thisGameObjectType) {
-					listOfIndexesToDelete.Add (i);
-				}
-				else {
-					break;
-				}
-			}	
-			else {
-				break;
-			}
-		}
-
-		//find object on left to destroy
-		for (int i = ind-1; i > 0; i--) {
-			if (!(stackControlRef.snakeStack [i].tag == "emptyObject")) {
-				print (stackControlRef.snakeStack[i].name);
-				float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<RandomColor> ().randomColor;
-				if (compareGameObjectType == thisGameObjectType) {
-					listOfIndexesToDelete.Add (i);
-				}
-				else {
-					break;
-				}
-
-			}
-			else {
-				break;
-			}
-		}
-
-		//destroy objects
-		//if (listOfIndexesToDelete.Count > 0) {
-		for (int i = 0; i<listOfIndexesToDelete.Count; i++) {
-			Transform thisObjectTransform;
-			thisObjectTransform = stackControlRef.snakeStack [listOfIndexesToDelete [i]].transform;
-			GameObject createdObject;
-			createdObject = Instantiate (emptySphere,thisObjectTransform.position,Quaternion.identity) as GameObject;
-			FollowMotionPath instantiatedObject;
-			instantiatedObject = createdObject.GetComponent<FollowMotionPath>();
-			float createdStartPosition;
-			createdStartPosition = stackControlRef.snakeStack [listOfIndexesToDelete [i]].GetComponent<FollowMotionPath>().uv;
-			instantiatedObject.startPosition = createdStartPosition;
-			print (createdStartPosition);
-			
-			Destroy (stackControlRef.snakeStack [listOfIndexesToDelete [i]]);
-			stackControlRef.snakeStack [listOfIndexesToDelete [i]] = instantiatedObject.gameObject;
-
-		}
-				//}
-				listOfIndexesToDelete.Clear ();
+    void OnDestroy()
+    {
+        print(gameObject.name + " is Destroyed!");
+    }
 
 
-		}
+    void DestoyChain()
+    {
+        int ind = stackControlRef.snakeStack.IndexOf(gameObject);
+        //print (ind);
+        float thisGameObjectType = gameObject.GetComponent<RandomColor>().randomColor;
+
+        //find object on right to destroy
+        for (int i = ind; i < stackControlRef.snakeStack.Count; i++)
+        {
+            if (!(stackControlRef.snakeStack[i].tag == "emptyObject"))
+            {
+                //print (stackControlRef.snakeStack[i].name);
+                float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<RandomColor>().randomColor;
+                if (compareGameObjectType == thisGameObjectType)
+                {
+                    listOfIndexesToDelete.Add(i);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        //find object on left to destroy
+        for (int i = ind - 1; i > 0; i--)
+        {
+            if (!(stackControlRef.snakeStack[i].tag == "emptyObject"))
+            {
+                print(stackControlRef.snakeStack[i].name);
+                float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<RandomColor>().randomColor;
+                if (compareGameObjectType == thisGameObjectType)
+                {
+                    listOfIndexesToDelete.Add(i);
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        //destroy objects
+        //if (listOfIndexesToDelete.Count > 0) {
+        for (int i = 0; i < listOfIndexesToDelete.Count; i++)
+        {
+            Transform thisObjectTransform;
+            thisObjectTransform = stackControlRef.snakeStack[listOfIndexesToDelete[i]].transform;
+            GameObject createdObject;
+            createdObject = Instantiate(emptySphere, thisObjectTransform.position, Quaternion.identity) as GameObject;
+            FollowMotionPath instantiatedObject;
+            instantiatedObject = createdObject.GetComponent<FollowMotionPath>();
+            float createdStartPosition;
+            createdStartPosition = stackControlRef.snakeStack[listOfIndexesToDelete[i]].GetComponent<FollowMotionPath>().uv;
+            instantiatedObject.startPosition = createdStartPosition;
+            print(createdStartPosition);
+            print(gameObject.name + " destroyed on click.");
+            Destroy(stackControlRef.snakeStack[listOfIndexesToDelete[i]]);
+            stackControlRef.snakeStack[listOfIndexesToDelete[i]] = instantiatedObject.gameObject;
+
+        }
+        //}
+        listOfIndexesToDelete.Clear();
+
+
+    }
 
 }
