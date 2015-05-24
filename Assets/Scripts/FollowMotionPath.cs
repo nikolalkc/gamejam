@@ -15,42 +15,23 @@ public class FollowMotionPath : MonoBehaviour
 	
 	void Start()
 	{
-		stackControlRef = GameObject.FindGameObjectWithTag("stackControl").GetComponent<StackController>();
 		lookVector = GameObject.FindGameObjectWithTag("lookVector").GetComponent<Transform>();
         motionPath = GameObject.FindGameObjectWithTag("path").GetComponent<MotionPath>();
 		uv = startPosition;
 		if (motionPath == null)
 			enabled = false;
 	}
-
-	public bool IsDynamic() {
-		snakeElementControl ElementProperties = gameObject.GetComponent<snakeElementControl>();
-		int elementIndex = ElementProperties.thisElementIndex;
-		bool isDynamic = true;
-		int stackCount = stackControlRef.snakeStack.Count;
-		int lastCreatedElementIndex = stackControlRef.snakeStack[stackCount].GetComponent<snakeElementControl>().thisElementIndex;
-		for (int i = elementIndex; i < lastCreatedElementIndex; i++) {
-			print ("StackCOunt:" + " " + stackCount + " i:" + i);
-			if (stackControlRef.snakeStack[i].tag == "emptyObject") {
-				isDynamic = false;
-				break;
-			}
-		}
-		return isDynamic;
-
-	}
+	
 	
 	void Update()
 	{
-		bool thisObjectIsDynamic = IsDynamic();
-		if (thisObjectIsDynamic) {
-			uv += ((speed / motionPath.length) * Time.fixedDeltaTime) + speedFactor;			// This gets you uv amount per second so speed is in realworld units
-		}
+		uv += ((speed / motionPath.length) * Time.fixedDeltaTime) + speedFactor;			// This gets you uv amount per second so speed is in realworld units
 		if (loop)
 			uv = (uv<0?1+uv:uv) %1;
         else if (uv > 1)
         {
             enabled = false;
+			stackControlRef = GameObject.FindGameObjectWithTag("stackControl").GetComponent<StackController>();
 			stackControlRef.snakeStack.Remove(gameObject);
 			Destroy(gameObject);
         }
