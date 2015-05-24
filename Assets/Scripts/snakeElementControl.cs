@@ -44,7 +44,7 @@ public class snakeElementControl : MonoBehaviour
 
     void OnDestroy()
     {
-        print(gameObject.name + " is Destroyed!");
+       // print(gameObject.name + " is Destroyed!");
     }
 
 
@@ -81,7 +81,7 @@ public class snakeElementControl : MonoBehaviour
         {
             if (!(stackControlRef.snakeStack[i].tag == "emptyObject"))
             {
-                print(stackControlRef.snakeStack[i].name);
+              //  print(stackControlRef.snakeStack[i].name);
                 float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<RandomColor>().randomColor;
                 if (compareGameObjectType == thisGameObjectType)
                 {
@@ -112,8 +112,8 @@ public class snakeElementControl : MonoBehaviour
             float createdStartPosition;
             createdStartPosition = stackControlRef.snakeStack[listOfIndexesToDelete[i]].GetComponent<FollowMotionPath>().uv;
             instantiatedObject.startPosition = createdStartPosition;
-            print(createdStartPosition);
-            print(gameObject.name + " destroyed on click.");
+           // print(createdStartPosition);
+            //print(gameObject.name + " destroyed on click.");
             Destroy(stackControlRef.snakeStack[listOfIndexesToDelete[i]]);
             stackControlRef.snakeStack[listOfIndexesToDelete[i]] = instantiatedObject.gameObject;
 

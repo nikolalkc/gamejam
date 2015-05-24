@@ -47,7 +47,7 @@ public class FollowMotionPath : MonoBehaviour
                 enabled = false;
                
                 stackControlRef.snakeStack.Remove(gameObject);
-                print(gameObject.name + " destroyed on PATH END.");
+             //   print(gameObject.name + " destroyed on PATH END.");
                 Destroy(gameObject);
             }
             Vector3 pos = motionPath.PointOnNormalizedPath(uv);
@@ -57,13 +57,19 @@ public class FollowMotionPath : MonoBehaviour
             transform.forward = speed > 0 ? norm : -norm;
 
             //soulution one, fixed angle
-            //cameraPosition = lookVector.position;
-            //transform.right =-cameraPosition;
+            if (gameObject.tag == "cube")
+            {
+                cameraPosition = lookVector.position;
+                transform.right = -cameraPosition;
+            }
 
             //solutuion two, look at camera
-            cameraPosition = lookVector.position;
-            Vector3 targetPosition = speed > 0 ? pos + norm : pos - norm;
-            transform.LookAt(targetPosition, cameraPosition);
+            if (gameObject.tag == "emptyObject")
+            {
+                cameraPosition = lookVector.position;
+                Vector3 targetPosition = speed > 0 ? pos + norm : pos - norm;
+                transform.LookAt(targetPosition, cameraPosition);
+            }
         }
     }
 

@@ -11,8 +11,10 @@ GameObject:
   - 33: {fileID: 3311204}
   - 65: {fileID: 6571860}
   - 23: {fileID: 2397826}
+  - 54: {fileID: 5459698}
+  - 114: {fileID: 11427652}
   m_Layer: 0
-  m_Name: Cube 1
+  m_Name: SphereDestructor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,11 +29,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 428894}
   - 33: {fileID: 3328894}
-  - 135: {fileID: 13528894}
   - 23: {fileID: 2328894}
   - 114: {fileID: 11428894}
   - 114: {fileID: 11416768}
-  - 54: {fileID: 5451578}
   m_Layer: 0
   m_Name: emptySphere
   m_TagString: emptyObject
@@ -70,7 +70,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128894}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -94,7 +94,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -126,12 +126,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128894}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5451578
+--- !u!54 &5459698
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128894}
+  m_GameObject: {fileID: 122428}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -164,6 +164,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee31b5091ff815b47879935d5203fc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11427652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee31b5091ff815b47879935d5203fc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11428894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,18 +191,6 @@ MonoBehaviour:
   loop: 0
   uv: 0
   movement: 0
---- !u!135 &13528894
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -12,9 +12,18 @@ public class emptySphereDestruction : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
+        //geting stuff
         GameObject parentSphere = gameObject.transform.parent.gameObject;
-        print(parentSphere.name);
-        st.snakeStack.Remove(parentSphere);
-        Destroy(parentSphere);
+        int collidedObjectIndex = st.snakeStack.IndexOf(col.gameObject);
+        int thisObjectIndex = st.snakeStack.IndexOf(parentSphere);
+        //print("collidedObjectIndex:" + collidedObjectIndex + " thisObjectIndex:" + thisObjectIndex);
+      
+        
+        //doing stuff
+        if (collidedObjectIndex > thisObjectIndex)  // da ne unistava emptySphere na hover sledeceg u nizu
+        {
+            st.snakeStack.Remove(parentSphere);
+            Destroy(parentSphere);
+        }
     }
 }
