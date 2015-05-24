@@ -57,13 +57,13 @@ public class FollowMotionPath : MonoBehaviour
             transform.forward = speed > 0 ? norm : -norm;
 
             //soulution one, fixed angle
-            //cameraPosition = lookVector.position;
-            //transform.right =-cameraPosition;
+            cameraPosition = lookVector.position;
+            transform.right =-cameraPosition;
 
             //solutuion two, look at camera
-            cameraPosition = lookVector.position;
+            /*cameraPosition = lookVector.position;
             Vector3 targetPosition = speed > 0 ? pos + norm : pos - norm;
-            transform.LookAt(targetPosition, cameraPosition);
+            transform.LookAt(targetPosition, cameraPosition);*/
         }
     }
 
@@ -71,6 +71,7 @@ public class FollowMotionPath : MonoBehaviour
     {
         int thisObjectIndexInList = stackControlRef.snakeStack.IndexOf(gameObject);
         int listCount = stackControlRef.snakeStack.Count;
+        movement = Movement.Dynamic;
         for (int i = thisObjectIndexInList; i < listCount; i++)
         {
 
