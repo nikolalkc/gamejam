@@ -62,10 +62,10 @@ public class FollowMotionPath : MonoBehaviour
 				uv = (uv<0?1+uv:uv) %1;
 	        else if (uv > 1)
 	        {
-				/*print (gameObject.name + "hav UV greater that 1");
+				print (gameObject.name + "hav UV greater that 1");
 	            enabled = false;
 				stackControlRef.snakeStack.Remove(gameObject);
-				Destroy(gameObject);*/
+				Destroy(gameObject);
 	        }
 			Vector3 pos = motionPath.PointOnNormalizedPath(uv);
 			Vector3 norm = motionPath.NormalOnNormalizedPath(uv);

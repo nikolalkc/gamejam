@@ -34,11 +34,6 @@ public class snakeElementControl : MonoBehaviour
 		//print ("======================");
 	}
 
-	void Ondestroy() {
-
-		print (gameObject.name + "was destroyed");
-	}
-
 	void OnMouseEnter ()
 	{
 		gameObject.transform.localScale = new Vector3 (1.2f, 1.2f, 1.2f);
