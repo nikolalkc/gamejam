@@ -52,7 +52,7 @@ public class snakeElementControl : MonoBehaviour
     {
         int ind = stackControlRef.snakeStack.IndexOf(gameObject);
         //print (ind);
-        float thisGameObjectType = gameObject.GetComponent<RandomColor>().randomColor;
+        float thisGameObjectType = gameObject.GetComponent<ElementType>().type;
 
         //find object on right to destroy
         for (int i = ind; i < stackControlRef.snakeStack.Count; i++)
