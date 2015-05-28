@@ -19,7 +19,7 @@ public class FollowMotionPathOriginal : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		//uv += ((speed / motionPath.length) * Time.fixedDeltaTime);			// This gets you uv amount per second so speed is in realworld units
+		uv += ((speed / motionPath.length) * Time.fixedDeltaTime);			// This gets you uv amount per second so speed is in realworld units
 		if (loop)
 			uv = (uv<0?1+uv:uv) %1;
 		else if (uv > 1)
