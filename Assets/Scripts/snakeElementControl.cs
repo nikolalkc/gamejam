@@ -38,7 +38,8 @@ public class snakeElementControl : MonoBehaviour
 	}
 
 	void OnMouseDown ()	{									//if (stackControlRef.snakeStack [i].tag <> "emptyObject")
-       // gameObject.GetComponent<FollowMotionPath>().movement = FollowMotionPath.Movement.Static;
+        print(gameObject.name + "is Clicked");
+        // gameObject.GetComponent<FollowMotionPath>().movement = FollowMotionPath.Movement.Static;
         DestoyChain();
 	}
 
@@ -60,7 +61,7 @@ public class snakeElementControl : MonoBehaviour
             if (!(stackControlRef.snakeStack[i].tag == "emptyObject"))
             {
                 //print (stackControlRef.snakeStack[i].name);
-                float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<RandomColor>().randomColor;
+                float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<ElementType>().type;
                 if (compareGameObjectType == thisGameObjectType)
                 {
                     listOfIndexesToDelete.Add(i);
@@ -81,8 +82,8 @@ public class snakeElementControl : MonoBehaviour
         {
             if (!(stackControlRef.snakeStack[i].tag == "emptyObject"))
             {
-              //  print(stackControlRef.snakeStack[i].name);
-                float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<RandomColor>().randomColor;
+                print(stackControlRef.snakeStack[i].name);
+                float compareGameObjectType = stackControlRef.snakeStack[i].GetComponent<ElementType>().type;
                 if (compareGameObjectType == thisGameObjectType)
                 {
                     listOfIndexesToDelete.Add(i);
@@ -101,8 +102,10 @@ public class snakeElementControl : MonoBehaviour
 
         //destroy objects
         //if (listOfIndexesToDelete.Count > 0) {
+       // print("destroy Objects");
         for (int i = 0; i < listOfIndexesToDelete.Count; i++)
         {
+           // print(listOfIndexesToDelete[i]);
             Transform thisObjectTransform;
             thisObjectTransform = stackControlRef.snakeStack[listOfIndexesToDelete[i]].transform;
             GameObject createdObject;

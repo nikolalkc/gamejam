@@ -7,7 +7,7 @@ public class ElementType : MonoBehaviour {
 	// Use this for initialization
     void Start()
     {
-        print(gameObject.name);
+        //print(gameObject.name);
         Transform[] childrenArray = gameObject.GetComponentsInChildren<Transform>();
 
         foreach (Transform t in childrenArray)
@@ -18,12 +18,12 @@ public class ElementType : MonoBehaviour {
             }
         }
         type = Random.Range(1, typeCount);
-        print("type:" + type);
+       // print("type:" + type);
         foreach (Transform g in childrenArray)
         {
             string iconName = "icon_0" + type.ToString();
             if (g.gameObject.name == iconName) {
-                print(g.gameObject.name);
+                //print(g.gameObject.name);
                 SpriteRenderer r = g.gameObject.GetComponent<SpriteRenderer>();
                 r.enabled = true;
             };
