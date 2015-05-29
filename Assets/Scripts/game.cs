@@ -5,7 +5,7 @@ public class game : MonoBehaviour {
 
 	public static GameObject emptyObject;
 	public static float globalSnakeSpeed = 2;
-	public static float globalSpawnSpeed = 0.75f;
+	public static float globalSpawnSpeed = 0.9f;
 
 	void Awake() {
 		emptyObject = new GameObject("emptyObject");

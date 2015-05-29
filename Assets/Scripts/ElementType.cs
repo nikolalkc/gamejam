@@ -17,8 +17,9 @@ public class ElementType : MonoBehaviour {
                 typeCount++;
             }
         }
+        print(typeCount);
         type = Random.Range(1, typeCount);
-       // print("type:" + type);
+        //print("type:" + type);
         foreach (Transform g in childrenArray)
         {
             string iconName = "icon_0" + type.ToString();

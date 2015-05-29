@@ -29,12 +29,12 @@ public class snakeElementControl : MonoBehaviour
 
 	void OnMouseEnter ()
 	{
-		gameObject.transform.localScale = new Vector3 (1.2f, 1.2f, 1.2f);
+		gameObject.transform.localScale = 1.2f * transform.localScale;
 	}
 
 	void OnMouseExit ()
 	{
-		gameObject.transform.localScale = new Vector3 (1f, 1f, 1f);
+        gameObject.transform.localScale =0.85f * transform.localScale;
 	}
 
 	void OnMouseDown ()	{									//if (stackControlRef.snakeStack [i].tag <> "emptyObject")
