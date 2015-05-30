@@ -11,6 +11,7 @@ GameObject:
   - 198: {fileID: 19825534}
   - 199: {fileID: 19901106}
   - 114: {fileID: 11476154}
+  - 114: {fileID: 11467422}
   m_Layer: 0
   m_Name: particle_puff
   m_TagString: Untagged
@@ -30,6 +31,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11467422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54480a9e755c40418d48a35ee339c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon_01: {fileID: 2800000, guid: bc4b694bbec221f49a418bab67587435, type: 3}
+  icon_02: {fileID: 2800000, guid: 48795692c2aac4141b46bc298a73df86, type: 3}
+  icon_03: {fileID: 2800000, guid: db7c16b6b0191e24da5cc89adca671ca, type: 3}
+  icon_04: {fileID: 2800000, guid: a91855ff671fe7d4cbc96a6651433a4c, type: 3}
+  icon_05: {fileID: 2800000, guid: 64dd247084374f04c8cb2dc2d9a4758f, type: 3}
+  particleMaterial: {fileID: 2100000, guid: 036827929999b064d9264f88130070d6, type: 2}
+  particleTexture: 0
 --- !u!114 &11476154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,8 +225,8 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4278589383
-      minMaxState: 1
+        rgba: 4294967295
+      minMaxState: 0
     startSize:
       scalar: 3.8499999
       maxCurve:

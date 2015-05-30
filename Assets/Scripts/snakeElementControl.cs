@@ -12,6 +12,7 @@ public class snakeElementControl : MonoBehaviour
 	public List<int> listOfIndexesToDelete;
 	public GameObject emptySphere;
     public GameObject puff;
+    
 	// Use this for initialization
 		void Start ()
 	{
@@ -117,9 +118,28 @@ public class snakeElementControl : MonoBehaviour
             instantiatedObject.startPosition = createdStartPosition;
            // print(createdStartPosition);
             //print(gameObject.name + " destroyed on click.");
+            //unisti objekat i izbrisi ga iz liste
+
+            //getuj tip objekta (boju)
+            int destroyGameObjectType = stackControlRef.snakeStack[listOfIndexesToDelete[i]].GetComponent<ElementType>().type;
+            print("destroy Object type:" + destroyGameObjectType);
+            //napravi partikl kao sto je objekat
+            GameObject part;
+            part = Instantiate(puff, stackControlRef.snakeStack[listOfIndexesToDelete[i]].transform.position, Quaternion.identity) as GameObject;
+           
+            ParticleTexture p = part.GetComponent<ParticleTexture>();
+            p.ChangeTexture(destroyGameObjectType);
+            //unistiii
             Destroy(stackControlRef.snakeStack[listOfIndexesToDelete[i]]);
             stackControlRef.snakeStack[listOfIndexesToDelete[i]] = instantiatedObject.gameObject;
-            Instantiate(puff, stackControlRef.snakeStack[listOfIndexesToDelete[i]].transform.position, Quaternion.identity);
+            
+            
+            
+
+            
+
+            
+
 
         }
         //}
