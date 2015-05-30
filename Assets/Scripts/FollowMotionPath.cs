@@ -28,7 +28,7 @@ public class FollowMotionPath : MonoBehaviour
 	}
 	
 	
-	void FixedUpdate()
+	void Update()
 	{
         SetMovement();
         MoveStep();
@@ -39,7 +39,7 @@ public class FollowMotionPath : MonoBehaviour
     {
         if (movement == Movement.Dynamic)
         {
-            uv += ((speed / motionPath.length) * Time.fixedDeltaTime) * speedFactor;			// This gets you uv amount per second so speed is in realworld units
+            uv += ((speed / motionPath.length) * Time.deltaTime) * speedFactor;			// This gets you uv amount per second so speed is in realworld units
             if (loop)
                 uv = (uv < 0 ? 1 + uv : uv) % 1;
             else if (uv > 1)
