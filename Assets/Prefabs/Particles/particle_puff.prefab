@@ -121,7 +121,7 @@ ParticleSystem:
           rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 4282664191
+          rgba: 4282702335
         key2:
           serializedVersion: 2
           rgba: 0
@@ -348,13 +348,13 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: .413800627
-          value: .486486584
-          inSlope: .939965248
-          outSlope: .939965248
+        - time: .417745411
+          value: .457915157
+          inSlope: -1.05099881
+          outSlope: -1.05099881
           tangentMode: 0
         - time: .995121896
-          value: .364864826
+          value: .183046639
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -407,7 +407,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4281743103
+          rgba: 4294967295
         key1:
           serializedVersion: 2
           rgba: 218103807
