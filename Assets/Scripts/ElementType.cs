@@ -17,8 +17,8 @@ public class ElementType : MonoBehaviour {
                 typeCount++;
             }
         }
-        print(typeCount);
-        type = Random.Range(1, 5);
+        //print(typeCount);
+        type = Random.Range(1, 6);
         //print("type:" + type);
         foreach (Transform g in childrenArray)
         {

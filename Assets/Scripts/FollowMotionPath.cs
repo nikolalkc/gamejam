@@ -78,13 +78,24 @@ public class FollowMotionPath : MonoBehaviour
         int thisObjectIndexInList = stackControlRef.snakeStack.IndexOf(gameObject);
         int listCount = stackControlRef.snakeStack.Count;
         movement = Movement.Dynamic;
-        for (int i = thisObjectIndexInList; i < listCount; i++)
+/*        for (int i = thisObjectIndexInList; i < listCount; i++)
         {
 
            if (stackControlRef.snakeStack[i].tag == "emptyObject") //ide do i-1 zato sto je 0-indexed govno
             {
                 movement = Movement.Static;
                 break;
+            }
+        }*/
+        foreach (GameObject g in stackControlRef.snakeStack)
+        {
+            if (stackControlRef.snakeStack.IndexOf(g) >= thisObjectIndexInList)
+            {
+                if (g.tag == "emptyObject")
+                {
+                    movement = Movement.Static;
+                    break;
+                }
             }
         }
 
