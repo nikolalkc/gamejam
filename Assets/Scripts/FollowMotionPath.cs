@@ -11,7 +11,7 @@ public class FollowMotionPath : MonoBehaviour
 	Transform lookVector;
 	Vector3 cameraPosition;
 	public float uv;
-    float speedFactor = 0;
+    public float speedFactor = 1;
     public enum Movement { Static, Dynamic };
     public Movement movement;
 	
@@ -39,7 +39,7 @@ public class FollowMotionPath : MonoBehaviour
     {
         if (movement == Movement.Dynamic)
         {
-            uv += ((speed / motionPath.length) * Time.fixedDeltaTime) + speedFactor;			// This gets you uv amount per second so speed is in realworld units
+            uv += ((speed / motionPath.length) * Time.fixedDeltaTime) * speedFactor;			// This gets you uv amount per second so speed is in realworld units
             if (loop)
                 uv = (uv < 0 ? 1 + uv : uv) % 1;
             else if (uv > 1)
@@ -73,27 +73,31 @@ public class FollowMotionPath : MonoBehaviour
         }
     }
 
+    void SetStatic()
+    {
+        movement = Movement.Static;
+    }
+
+    void SetDynamic()
+    {
+        movement = Movement.Dynamic;
+    }
     void SetMovement()
     {
         int thisObjectIndexInList = stackControlRef.snakeStack.IndexOf(gameObject);
         int listCount = stackControlRef.snakeStack.Count;
+        Animator animator = gameObject.GetComponent<Animator>();
         movement = Movement.Dynamic;
-/*        for (int i = thisObjectIndexInList; i < listCount; i++)
-        {
-
-           if (stackControlRef.snakeStack[i].tag == "emptyObject") //ide do i-1 zato sto je 0-indexed govno
-            {
-                movement = Movement.Static;
-                break;
-            }
-        }*/
+        animator.SetBool("Static", false);
         foreach (GameObject g in stackControlRef.snakeStack)
         {
             if (stackControlRef.snakeStack.IndexOf(g) >= thisObjectIndexInList)
             {
                 if (g.tag == "emptyObject")
                 {
-                    movement = Movement.Static;
+                    // movement = Movement.Static;
+
+                    animator.SetBool("Static",true);
                     break;
                 }
             }

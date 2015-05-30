@@ -15,10 +15,11 @@ GameObject:
   - 114: {fileID: 11400004}
   - 54: {fileID: 5419442}
   - 114: {fileID: 11485954}
+  - 95: {fileID: 9562358}
   m_Layer: 0
   m_Name: Cube
   m_TagString: cube
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -211,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .629999995, y: .769999981, z: 0}
+  m_LocalPosition: {x: -17.4217892, y: -4.12543201, z: 0}
   m_LocalScale: {x: 1.55307126, y: 1.55307162, z: 1.55307162}
   m_Children:
   - {fileID: 400002}
@@ -398,6 +399,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .956881225, y: 1, z: 1}
   m_Center: {x: .0215572398, y: 0, z: 0}
+--- !u!95 &9562358
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa798cee3e437de4dbec26b857c470f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!96 &9643486
 TrailRenderer:
   m_ObjectHideFlags: 1
@@ -458,6 +476,7 @@ MonoBehaviour:
   startPosition: 0
   loop: 0
   uv: 0
+  speedFactor: 0
   movement: 0
 --- !u!114 &11400004
 MonoBehaviour:
