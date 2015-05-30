@@ -399,6 +399,7 @@ MonoBehaviour:
   thisElementIndex: 0
   listOfIndexesToDelete: 
   emptySphere: {fileID: 128894, guid: 7691bc584d1328b40830650ba3026959, type: 2}
+  puff: {fileID: 193130, guid: 8d372d8d008b425409857007a9d1210b, type: 2}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

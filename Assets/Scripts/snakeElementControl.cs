@@ -11,7 +11,7 @@ public class snakeElementControl : MonoBehaviour
 	public int thisElementIndex;
 	public List<int> listOfIndexesToDelete;
 	public GameObject emptySphere;
-
+    public GameObject puff;
 	// Use this for initialization
 		void Start ()
 	{
@@ -119,6 +119,7 @@ public class snakeElementControl : MonoBehaviour
             //print(gameObject.name + " destroyed on click.");
             Destroy(stackControlRef.snakeStack[listOfIndexesToDelete[i]]);
             stackControlRef.snakeStack[listOfIndexesToDelete[i]] = instantiatedObject.gameObject;
+            Instantiate(puff, stackControlRef.snakeStack[listOfIndexesToDelete[i]].transform.position, Quaternion.identity);
 
         }
         //}
