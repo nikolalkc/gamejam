@@ -4,8 +4,8 @@ using System.Collections;
 public class game : MonoBehaviour {
 
 	public static GameObject emptyObject;
-	public static float globalSnakeSpeed = 2;
-	public static float globalSpawnSpeed = 0.9f;
+	public static float globalSnakeSpeed = 3;
+	public static float globalSpawnSpeed = 0.7f;
 
 	void Awake() {
 		emptyObject = new GameObject("emptyObject");
