@@ -312,7 +312,7 @@ GameObject:
   - 4: {fileID: 253108218}
   - 212: {fileID: 253108217}
   m_Layer: 0
-  m_Name: firstInFirstStaticChainRing
+  m_Name: firstStaticRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,9 +412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snakeStack: []
   text: {fileID: 200907122}
-  firstStaticRing: {fileID: 648195178}
-  firstInFirstStaticChainRing: {fileID: 253108216}
+  firstEmptyRing: {fileID: 648195178}
   lastDynamicRing: {fileID: 25202454}
+  firstStaticRing: {fileID: 253108216}
 --- !u!4 &629222599
 Transform:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ GameObject:
   - 4: {fileID: 648195180}
   - 212: {fileID: 648195179}
   m_Layer: 0
-  m_Name: firstStaticRing
+  m_Name: firstEmptyRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

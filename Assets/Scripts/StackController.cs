@@ -8,13 +8,17 @@ public class StackController : MonoBehaviour {
 	public List<GameObject> snakeStack;
 	public Text text;
 
-	public static GameObject firstStaticElement;
-	public static GameObject lastDynamicElement;
-	public static GameObject firstInFirstStaticChain;
-	public GameObject firstStaticRing;
-	public GameObject firstInFirstStaticChainRing;
+	public GameObject firstEmptyRing;
 	public GameObject lastDynamicRing;
-	StackController s;
+	public GameObject firstStaticRing;
+
+
+	public static GameObject firstEmpty;
+	public static GameObject lastDynamic;
+	public static GameObject lastEmpty;
+	public static GameObject firstStatic;
+	public static GameObject lastInStaticChain;
+	public static GameObject firstNextEmpty;
 
 	void Update() {
 
@@ -30,67 +34,76 @@ public class StackController : MonoBehaviour {
 			}
 		}
 
-
-		//definisanje elemenata
-
-		//first static
-		firstStaticElement = null;
-		foreach (GameObject g in snakeStack) {
-			if (g.tag == "emptyObject") {
-				firstStaticElement = g;
-				break;
-			}
-		}
-
-
+		//first empty
+		firstEmpty = null;
 		if (snakeStack.Count > 0) {
-			lastDynamicElement = snakeStack.Last ();
-		}
+			int lastElementIndex = snakeStack.IndexOf (snakeStack.Last ());
 
-		if (firstStaticElement != null) {
-			int indexOfFirstStatic = snakeStack.IndexOf(firstStaticElement);
-			lastDynamicElement = snakeStack[indexOfFirstStatic-1];
-		}
-
-
-
-
-
-
-
-
-		//prvi u prvom staticnom lancu
-		firstInFirstStaticChain = null;
-		foreach (GameObject g in snakeStack) {
-			if (snakeStack.IndexOf(g) > snakeStack.IndexOf(firstStaticElement)) { //da krene od prvog staticnog pa nadalje
-				if (g.tag != "emptyObject") {
-					firstInFirstStaticChain = g;
+			for (int i = lastElementIndex; i > 0; i--) {
+				if (snakeStack[i].tag == "emptyObject") {
+					firstEmpty = snakeStack[i];
 					break;
 				}
 			}
 		}
 
+		//last dynamic
+		if (snakeStack.Count > 0) {
+			lastDynamic = snakeStack.Last ();
+			if (firstEmpty != null) {
+				int indexOfFirstEmpty = snakeStack.IndexOf (firstEmpty);
+				lastDynamic = snakeStack [indexOfFirstEmpty + 1];
+			}
+		}
 
-		if (lastDynamicElement == null) {
+
+		//firstStatic
+		firstStatic = null;
+		if (firstEmpty != null) {
+			int indexOfFirstEmpty = snakeStack.IndexOf(firstEmpty);
+			print (indexOfFirstEmpty +" indekas");
+			for (int i = indexOfFirstEmpty; i>0; i--) {
+				if (snakeStack[i].tag != "emptyObject") {
+					firstStatic = snakeStack[i];
+					break;
+				}
+			}
+		}
+		print ("**************************");
+
+
+
+		//debug rings positioning
+
+		if (firstEmpty == null) {
+			firstEmptyRing.SetActive (false);
+		} else {
+			firstEmptyRing.SetActive (true);
+			firstEmptyRing.transform.position = firstEmpty.transform.position;
+		}
+
+		if (lastDynamic == null) {
 			lastDynamicRing.SetActive (false);
 		} else {
 			lastDynamicRing.SetActive (true);
-			lastDynamicRing.transform.position = lastDynamicElement.transform.position;
+			lastDynamicRing.transform.position = lastDynamic.transform.position;
 		}
 
-		if (firstStaticElement == null) {
-			firstStaticRing.SetActive (false);
+
+		if (firstStatic == null) {
+			firstStaticRing.SetActive(false);
+
 		} else {
 			firstStaticRing.SetActive (true);
-			firstStaticRing.transform.position = firstStaticElement.transform.position;
+			firstStaticRing.transform.position = firstStatic.transform.position;
 		}
-
+		/*
 		if (firstInFirstStaticChain == null) {
 			firstInFirstStaticChainRing.SetActive (false);
 		} else {
 			firstInFirstStaticChainRing.SetActive (true);
 			firstInFirstStaticChainRing.transform.position = firstInFirstStaticChain.transform.position;
-		}
+		}*/
 
 
 
