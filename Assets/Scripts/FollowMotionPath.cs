@@ -85,7 +85,6 @@ public class FollowMotionPath : MonoBehaviour
     void SetMovement()
     {
         int thisObjectIndexInList = stackControlRef.snakeStack.IndexOf(gameObject);
-        int listCount = stackControlRef.snakeStack.Count;
         Animator animator = gameObject.GetComponent<Animator>();
         movement = Movement.Dynamic;
         animator.SetBool("Static", false);
