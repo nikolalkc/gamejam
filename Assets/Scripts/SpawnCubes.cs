@@ -91,12 +91,12 @@ public class SpawnCubes : MonoBehaviour {
 
 		int chainLength = Random.Range (2, 3+1);
 		int icon = Random.Range (1, VirusTypes+1);
-		print ("CreateSmallChain:" + " Lenth:" + chainLength + " Icon:" + icon);
+	//	print ("CreateSmallChain:" + " Lenth:" + chainLength + " Icon:" + icon);
 		currentGenerationChain.Clear ();
 		for (int i = 0; i < chainLength; i++) {
 			currentGenerationChain.Add(icon);
 		}
-		print ("============================");
+		//print ("============================");
 	}
 
 	void CreateLongChain() {
@@ -108,7 +108,7 @@ public class SpawnCubes : MonoBehaviour {
 		for (int i = 0; i < chainLength; i++) {
 			currentGenerationChain.Add(icon);
 		} 
-		print ("============================");
+		//print ("============================");
 	}
 
 	void CreateTwoSingleVirus() {
@@ -117,10 +117,10 @@ public class SpawnCubes : MonoBehaviour {
 		currentGenerationChain.Clear ();
 		for (int i = 0; i < chainLength; i++) {
 			int icon = Random.Range (1, VirusTypes+1);
-			print ("createTwoSingleVirus"+ " Lenth:" + chainLength + " Icon:" + icon);
+			//print ("createTwoSingleVirus"+ " Lenth:" + chainLength + " Icon:" + icon);
 			currentGenerationChain.Add(icon);
 		} 
-		print ("============================");
+		//print ("============================");
 
 	}
 
@@ -129,11 +129,11 @@ public class SpawnCubes : MonoBehaviour {
 		int chainLength = 2;
 		int icon = Random.Range (1, VirusTypes+1);	
 		currentGenerationChain.Clear ();
-		print ("CreateDoubleVirus:"+ " Lenth:" + chainLength + " Icon:" + icon);
+		//print ("CreateDoubleVirus:"+ " Lenth:" + chainLength + " Icon:" + icon);
 		for (int i = 0; i < chainLength; i++) {
 			currentGenerationChain.Add(icon);
 		} 
-		print ("============================");
+	//	print ("============================");
 	}
 
 	#endregion

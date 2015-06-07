@@ -37,18 +37,18 @@ public class snakeElementControl : MonoBehaviour
 ;
 
 		foreach (GameObject g in stackControlRef.snakeStack) {
-			print ("List:" + g.name);
+		//	print ("List:" + g.name);
 		}
 		float uv0 = stackControlRef.snakeStack [0].GetComponent<FollowMotionPath> ().uv;
 		float uv1 = stackControlRef.snakeStack [1].GetComponent<FollowMotionPath> ().uv;
 
 		deltaVirusDistance = uv0 - uv1;
-		print ("DeltaVirusDistance = " + deltaVirusDistance);
+	//	print ("DeltaVirusDistance = " + deltaVirusDistance);
 	}
 
 	void OnMouseDown ()
 	{									//if (stackControlRef.snakeStack [i].tag <> "emptyObject")
-		print (gameObject.name + "is Clicked");
+		//print (gameObject.name + "is Clicked");
 		// gameObject.GetComponent<FollowMotionPath>().movement = FollowMotionPath.Movement.Static;
 		DestoyChain ();
 	}
@@ -77,7 +77,7 @@ public class snakeElementControl : MonoBehaviour
 		//find object on left to destroy
 		for (int i = ind - 1; i >= 0; i--) {
 			if (!(stackControlRef.snakeStack [i].tag == "emptyObject")) {
-				print (stackControlRef.snakeStack [i].name);
+				//print (stackControlRef.snakeStack [i].name);
 				float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<ElementType> ().type;
 				if (compareGameObjectType == thisGameObjectType) {
 					listOfIndexesToDelete.Add (i);
@@ -110,7 +110,7 @@ public class snakeElementControl : MonoBehaviour
 
 				//getuj tip objekta (boju)
 				int destroyGameObjectType = stackControlRef.snakeStack [listOfIndexesToDelete [i]].GetComponent<ElementType> ().type;
-				print ("destroy Object type:" + destroyGameObjectType);
+			//	print ("destroy Object type:" + destroyGameObjectType);
 				//napravi partikl kao sto je objekat
 				GameObject part;
 				part = Instantiate (puff, stackControlRef.snakeStack [listOfIndexesToDelete [i]].transform.position, Quaternion.identity) as GameObject;
