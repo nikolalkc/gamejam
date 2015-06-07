@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  typeOverride: 0
 --- !u!212 &21213874
 SpriteRenderer:
   m_ObjectHideFlags: 1

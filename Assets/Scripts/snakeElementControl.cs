@@ -12,6 +12,7 @@ public class snakeElementControl : MonoBehaviour
 	public List<int> listOfIndexesToDelete;
 	public GameObject emptySphere;
 	public GameObject puff;
+	public static float deltaVirusDistance;
     
 	void Start ()
 	{
@@ -19,12 +20,30 @@ public class snakeElementControl : MonoBehaviour
 		text.color = Color.black;
 		text.text = elementIndex.ToString ();
 		thisElementIndex = elementIndex;
+
 		elementIndex += 1;
 
 		gameObject.name = "Virus_" + thisElementIndex.ToString ();
 		stackControlRef = GameObject.FindGameObjectWithTag ("stackControl").GetComponent<StackController> ();
 		stackControlRef.snakeStack.Add (gameObject);
 
+		if (elementIndex == 2) {
+			CalculateVirusDistance();
+		}
+
+	}
+
+	void CalculateVirusDistance() {
+;
+
+		foreach (GameObject g in stackControlRef.snakeStack) {
+			print ("List:" + g.name);
+		}
+		float uv0 = stackControlRef.snakeStack [0].GetComponent<FollowMotionPath> ().uv;
+		float uv1 = stackControlRef.snakeStack [1].GetComponent<FollowMotionPath> ().uv;
+
+		deltaVirusDistance = uv0 - uv1;
+		print ("DeltaVirusDistance = " + deltaVirusDistance);
 	}
 
 	void OnMouseEnter ()
@@ -66,7 +85,7 @@ public class snakeElementControl : MonoBehaviour
 		}
 
 		//find object on left to destroy
-		for (int i = ind - 1; i > 0; i--) {
+		for (int i = ind - 1; i >= 0; i--) {
 			if (!(stackControlRef.snakeStack [i].tag == "emptyObject")) {
 				print (stackControlRef.snakeStack [i].name);
 				float compareGameObjectType = stackControlRef.snakeStack [i].GetComponent<ElementType> ().type;

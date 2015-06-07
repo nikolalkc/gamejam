@@ -44,7 +44,6 @@ GameObject:
   - 4: {fileID: 482266}
   - 212: {fileID: 21258782}
   - 61: {fileID: 6121980}
-  - 114: {fileID: 11463902}
   m_Layer: 0
   m_Name: rectangle
   m_TagString: Untagged
@@ -148,17 +147,6 @@ MonoBehaviour:
   uv: 0
   speedFactor: 0
   movement: 0
---- !u!114 &11463902
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee31b5091ff815b47879935d5203fc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21258782
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -191,7 +179,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152048}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:

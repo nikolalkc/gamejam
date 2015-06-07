@@ -49,6 +49,7 @@ public class StackController : MonoBehaviour {
 
 		//last dynamic
 		if (snakeStack.Count > 0) {
+
 			lastDynamic = snakeStack.Last ();
 			if (firstEmpty != null) {
 				int indexOfFirstEmpty = snakeStack.IndexOf (firstEmpty);
