@@ -40,10 +40,14 @@ public class emptySphereDestruction : MonoBehaviour {
 			float distanceFromStaticToDynamic;
 			float uvFStatic = StackController.firstStatic.GetComponent<FollowMotionPath> ().uv;
 			float uvLDynamic = StackController.lastDynamic.GetComponent<FollowMotionPath> ().uv;
+            float uvSelf = GetComponent<FollowMotionPath>().uv;
+            float distanceFromDynamicToSelf = uvSelf - uvLDynamic;
+            float distanceFromStaticToSelf = uvFStatic - uvSelf;
 			distanceFromStaticToDynamic = uvFStatic - uvLDynamic;
 
 			//doing stuff
-			if (selfIndex < lastDynamicIndex && selfIndex > firstStaticIndex && distanceFromStaticToDynamic <= snakeElementControl.deltaVirusDistance) {
+            if (selfIndex < lastDynamicIndex && selfIndex > firstStaticIndex && distanceFromStaticToDynamic <= distanceFromStaticToSelf)
+            {
 				st.snakeStack.Remove (gameObject);
 				Destroy (gameObject);	
 			}

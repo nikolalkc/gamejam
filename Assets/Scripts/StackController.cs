@@ -20,7 +20,7 @@ public class StackController : MonoBehaviour {
 	public static GameObject lastInStaticChain;
 	public static GameObject firstNextEmpty;
 
-	void Update() {
+	void LateUpdate() {
 
 		//debuging lista za ispisivanje
 		text.text = "";
