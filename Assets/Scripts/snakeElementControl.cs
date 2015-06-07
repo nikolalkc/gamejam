@@ -21,7 +21,7 @@ public class snakeElementControl : MonoBehaviour
 		thisElementIndex = elementIndex;
 		elementIndex += 1;
 
-		gameObject.name = "Cube_" + thisElementIndex.ToString ();
+		gameObject.name = "Virus_" + thisElementIndex.ToString ();
 		stackControlRef = GameObject.FindGameObjectWithTag ("stackControl").GetComponent<StackController> ();
 		stackControlRef.snakeStack.Add (gameObject);
 

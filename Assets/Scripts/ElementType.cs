@@ -4,6 +4,7 @@ using System.Collections;
 public class ElementType : MonoBehaviour {
     int typeCount;
     public int type;
+	public int typeOverride;
 	// Use this for initialization
     void Start()
     {
@@ -18,7 +19,11 @@ public class ElementType : MonoBehaviour {
             }
         }
         //print(typeCount);
-        type = Random.Range(1, 6);
+		if (typeOverride == 0) {
+			type = Random.Range (1, 6);
+		} else {
+			type = typeOverride;
+		}
         //print("type:" + type);
         foreach (Transform g in childrenArray)
         {
