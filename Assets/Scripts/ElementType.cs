@@ -20,7 +20,7 @@ public class ElementType : MonoBehaviour {
         }
         //print(typeCount);
 		if (typeOverride == 0) {
-			type = Random.Range (1, 6);
+			type = Random.Range (1, 5+1);
 		} else {
 			type = typeOverride;
 		}
