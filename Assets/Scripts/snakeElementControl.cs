@@ -46,16 +46,6 @@ public class snakeElementControl : MonoBehaviour
 		print ("DeltaVirusDistance = " + deltaVirusDistance);
 	}
 
-	void OnMouseEnter ()
-	{
-		gameObject.transform.localScale = 1.2f * transform.localScale;
-	}
-
-	void OnMouseExit ()
-	{
-		gameObject.transform.localScale = 0.85f * transform.localScale;
-	}
-
 	void OnMouseDown ()
 	{									//if (stackControlRef.snakeStack [i].tag <> "emptyObject")
 		print (gameObject.name + "is Clicked");
