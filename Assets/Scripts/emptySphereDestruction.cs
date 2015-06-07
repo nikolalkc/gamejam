@@ -10,13 +10,13 @@ public class emptySphereDestruction : MonoBehaviour {
     }
 
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         //geting stuff
         GameObject parentSphere = gameObject.transform.parent.gameObject;
         int collidedObjectIndex = st.snakeStack.IndexOf(col.gameObject);
         int thisObjectIndex = st.snakeStack.IndexOf(parentSphere);
-        //print("collidedObjectIndex:" + collidedObjectIndex + " thisObjectIndex:" + thisObjectIndex);
+        print("collidedObjectIndex:" + collidedObjectIndex + " thisObjectIndex:" + thisObjectIndex);
       
         
         //doing stuff

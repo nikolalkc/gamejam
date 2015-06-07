@@ -13,8 +13,7 @@ public class snakeElementControl : MonoBehaviour
 	public GameObject emptySphere;
     public GameObject puff;
     
-	// Use this for initialization
-		void Start ()
+	void Start ()
 	{
 		text = gameObject.GetComponentInChildren<Text> ();
 		text.color = Color.black;
@@ -43,12 +42,6 @@ public class snakeElementControl : MonoBehaviour
         // gameObject.GetComponent<FollowMotionPath>().movement = FollowMotionPath.Movement.Static;
         DestoyChain();
 	}
-
-    void OnDestroy()
-    {
-       // print(gameObject.name + " is Destroyed!");
-    }
-
 
     void DestoyChain()
     {

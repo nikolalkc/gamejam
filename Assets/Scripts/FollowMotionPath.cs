@@ -60,16 +60,19 @@ public class FollowMotionPath : MonoBehaviour
             if (gameObject.tag == "cube")
             {
                 cameraPosition = lookVector.position;
-                transform.right = -cameraPosition;
+                transform.forward = -cameraPosition;
             }
 
             //solutuion two, look at camera
-            if (gameObject.tag == "emptyObject")
+           if (gameObject.tag == "emptyObject")
             {
                 cameraPosition = lookVector.position;
                 Vector3 targetPosition = speed > 0 ? pos + norm : pos - norm;
                 transform.LookAt(targetPosition, cameraPosition);
             }
+
+
+
         }
     }
 

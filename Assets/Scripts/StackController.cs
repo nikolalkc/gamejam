@@ -61,7 +61,7 @@ public class StackController : MonoBehaviour {
 		firstStatic = null;
 		if (firstEmpty != null) {
 			int indexOfFirstEmpty = snakeStack.IndexOf(firstEmpty);
-			print (indexOfFirstEmpty +" indekas");
+			//print (indexOfFirstEmpty +" indekas");
 			for (int i = indexOfFirstEmpty; i>0; i--) {
 				if (snakeStack[i].tag != "emptyObject") {
 					firstStatic = snakeStack[i];
@@ -69,7 +69,7 @@ public class StackController : MonoBehaviour {
 				}
 			}
 		}
-		print ("**************************");
+		//print ("**************************");
 
 
 
