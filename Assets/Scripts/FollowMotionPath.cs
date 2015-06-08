@@ -12,7 +12,6 @@ public class FollowMotionPath : MonoBehaviour
     Vector3 cameraPosition;
     public float uv;
     public float speedFactor = 1;
-	public bool animateMove = false;
     public enum Movement { Static, Dynamic };
     public Movement movement;
 
@@ -32,7 +31,7 @@ public class FollowMotionPath : MonoBehaviour
     void Update()
     {
         SetMovement();
-        if (movement == Movement.Dynamic  ||  animateMove)
+        if (movement == Movement.Dynamic)
         {
             MoveStep();
         }
@@ -81,7 +80,6 @@ public class FollowMotionPath : MonoBehaviour
 
     void SetStatic()
     {
-		print(gameObject.name + " is now Static");
         movement = Movement.Static;
     }
 
